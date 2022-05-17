@@ -47,7 +47,7 @@ if (!empty($messages)) {
 	  <option value="Выбрать">Выбрать</option>
 	<?php
 		for($i=1900;$i<=2022;$i++){
-			if ($values['year']==$i){printf("<option selected value=%d>%d год</option>",$i,$i)} else
+			if ($values['year']==$i){printf("<option selected value=%d>%d год</option>",$i,$i);} else
 		  printf("<option value=%d>%d год</option>",$i,$i);
 		}
 	?>
