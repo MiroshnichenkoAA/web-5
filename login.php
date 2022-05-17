@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <?php
   }
 }
-else 
+else {
   $l=$_POST['login'];
   $p=$_POST['pass'];
   $uid=0;
