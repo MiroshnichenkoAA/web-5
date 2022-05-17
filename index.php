@@ -297,7 +297,7 @@ try {
   }
     $usr=$db->prepare("insert into username set id=?,login=?,pass=?");
 
-        $usr->execute(array($id,$login,$pass_in));
+        $usr->execute(array($id,$login,$pass_hash));
 
 }
 catch(PDOException $e){
