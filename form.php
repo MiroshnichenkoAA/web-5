@@ -94,7 +94,36 @@ if (!empty($messages)) {
 		Биография:<br />
 		<textarea name="bio">$value['bio']</textarea>
 	  </label><br />
-
+<?php 
+    $cl_e='';
+    $ch='';
+    if($values['checkbox'] or !empty($_SESSION['login'])){
+      $ch='checked';
+    }
+    if ($errors['checkbox']) {
+      $cl_e='class="error"';
+    }
+    if(empty($_SESSION['login'])){
+    print('
+    <div  '.$cl_e.' >
+    <input name="checkbox" type="checkbox" '.$ch.'> Вы согласны с пользовательским соглашением <br>
+    </div>');}
+    ?>
+    <input type="submit" value="Отправить"/>
+  </form>
+  <?php
+  if(empty($_SESSION['login'])){
+   echo'
+   <div class="login">
+    <p>Если у вас есть аккаунт, вы можете <a href="login.php">войти</a></p>
+   </div>';
+  }
+  else{
+    echo '
+    <div class="logout">
+      <a href="logout.php" name="logout">Выйти</a>
+    </div>';
+  } ?>
 	  Чекбокс:<br />
 	  <label><input <?php if (errors['checkbox']){print('class="error"');}?> type="checkbox" <?php if($values['checkbox']) print('checked');?> name="checkbox"/>
 		Я Не болею за Red Bull Racing</label><br />
