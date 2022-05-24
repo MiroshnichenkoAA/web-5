@@ -1,8 +1,35 @@
-<?php
+
 // Отправляем браузеру правильную кодировку,
 // файл index.php должен быть в кодировке UTF-8 без BOM.
 header('Content-Type: text/html; charset=UTF-8');
+<?php
+ 
+function getRandomString($length = 15) {
+    $chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    $numChars = strlen($chars);
+    $string = '';
+    for ($i = 0; $i < $length; $i++) {
+        $string .= substr($chars, rand(1, $numChars) - 1, 1);
+    }
+    return $string;
+}
+ 
 session_start();
+ 
+if ($_POST) {
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+ 
+    if ($_POST['csrf'] === $_SESSION['csrf']) {
+        echo '<p>Токены идентичны. Ваши данные приняты.</p>';
+    } else {
+        echo '<p>Токены не совпадают. Ваши данные отклонены.</p>';
+    }
+} else {
+    $_SESSION['csrf'] = getRandomString();
+}
+
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
