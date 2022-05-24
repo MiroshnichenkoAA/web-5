@@ -233,13 +233,13 @@ else {
   setcookie('privacy_error', '', 100000);
 }
 
- $name=$_POST['name'];
-  $email=$_POST['email'];
-  $year=$_POST['year'];
-  $pol=$_POST['pol'];
-  $limb=$_POST['limb'];
-  $super=$_POST['super'];
-  $bio=$_POST['bio'];
+ $name=htmlspecialchars ($_POST['name'], ENT_QUOTES, 'UTF-8');
+  $email=htmlspecialchars ($_POST['email'], ENT_QUOTES, 'UTF-8');
+  $year=htmlspecialchars ($_POST['year'], ENT_QUOTES, 'UTF-8');
+  $pol=htmlspecialchars ($_POST['pol'], ENT_QUOTES, 'UTF-8');
+  $limb=htmlspecialchars ($_POST['limb'], ENT_QUOTES, 'UTF-8');
+  $super=htmlspecialchars ($_POST['super'], ENT_QUOTES, 'UTF-8');
+  $bio=htmlspecialchars ($_POST['bio'];
   if(empty($_SESSION['login'])){
     $check=$_POST['checkbox'];
   }
