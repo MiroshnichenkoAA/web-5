@@ -120,12 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $get->bindParam(1,$_SESSION['uid']);
       $get->execute();
       $inf=$get->fetchALL();
-      $values['name']=$inf[0]['name'];
-      $values['email']=$inf[0]['email'];
-      $values['year']=$inf[0]['year'];
-      $values['pol']=$inf[0]['sex'];
-      $values['limb']=$inf[0]['limbs'];
-      $values['bio']=$inf[0]['bio'];
+      $values['name']=htmlspecialchars ($inf[0]['name'],ENT_QUOTES, 'UTF-8');
+      $values['email']=htmlspecialchars ($inf[0]['email'],ENT_QUOTES, 'UTF-8');
+      $values['year']=htmlspecialchars ($inf[0]['year'],ENT_QUOTES, 'UTF-8');
+      $values['pol']=htmlspecialchars($inf[0]['sex'],ENT_QUOTES, 'UTF-8');
+      $values['limb']=htmlspecialchars ($inf[0]['limbs'],ENT_QUOTES, 'UTF-8');
+      $values['bio']=($inf[0]['bio'],ENT_QUOTES, 'UTF-8');
 
       $get2=$db->prepare("select p_name from power where p_id=?");
       $get2->bindParam(1,$_SESSION['uid']);
